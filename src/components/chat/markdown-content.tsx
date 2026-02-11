@@ -15,10 +15,14 @@ function CodeBlock({ children, className, ...props }: HTMLAttributes<HTMLPreElem
   const preRef = useRef<HTMLPreElement>(null);
 
   const handleCopy = useCallback(async () => {
-    const text = preRef.current?.textContent ?? "";
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      const text = preRef.current?.textContent ?? "";
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable (e.g. non-HTTPS or restricted context)
+    }
   }, []);
 
   return (
