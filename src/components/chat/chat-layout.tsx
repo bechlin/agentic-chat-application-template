@@ -54,7 +54,7 @@ export function ChatLayout() {
       />
 
       <div className="chat-gradient-bg flex flex-1 flex-col">
-        <ChatHeader title={activeTitle} onToggleSidebar={toggleSidebar} />
+        <ChatHeader title={activeTitle} messages={messages} onToggleSidebar={toggleSidebar} />
 
         {isLoadingMessages && activeConversationId ? (
           <div className="flex-1 overflow-y-auto">

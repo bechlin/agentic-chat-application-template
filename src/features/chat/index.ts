@@ -1,3 +1,6 @@
+// Export
+export { formatConversationAsMarkdown } from "./export";
+
 // Types
 
 // Constants
